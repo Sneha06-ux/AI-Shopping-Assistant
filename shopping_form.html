@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Shopping Assistant</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    body {
+            background-image: url('data:image/png;base64,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'); /* truncated for readability */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+        }
+
+        /* Smooth Transition for the Form */
+        .form-group input, .btn {
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Animation for Form's input and button on focus/hover */
+        .form-group input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background-color: #0056b3;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+        }
+
+        /* Fade-in Animation for Heading and Form */
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Button transition */
+        .btn {
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Add a slight shadow on focus for better interactivity */
+        .form-group input:focus {
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            border-color: #007bff;
+            }
+
+    </style>
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center vh-100 ">
+    <div class="card shadow-lg p-4" style="max-width: 500px; width: 100%;">
+        <div class="card-body">
+            <h2 class="card-title text-center text-primary mb-4 fw-bold">
+                <i class="fas fa-shopping-cart me-2"></i>AI Shopping Assistant
+            </h2>
+            <form method="POST" action="/" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="query" class="form-label fw-semibold">
+                        <i class="fas fa-search me-2 text-secondary"></i>What are you looking for?
+                    </label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-lg shadow-sm" id="query" name="query" placeholder="E.g., Best gaming laptop" required>
+                        <button class="btn btn-outline-primary" type="submit">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter a product or category.
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg w-100 mt-3">
+                    <i class="fas fa-magic me-2"></i>Get Recommendations
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Optional: Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
